@@ -4,7 +4,7 @@ name: Build and Deploy to GCP
 
 on:
   workflow_run:
-    workflows: ["Update Template for GTS"]
+    workflows: ["Update Hugo Template for GTS"]
     types:
       - completed
   #push:
