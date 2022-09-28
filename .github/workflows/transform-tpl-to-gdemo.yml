@@ -1,4 +1,4 @@
-name: Update Template for GTS
+name: Update Hugo Template for GTS
 on: [push]
 jobs:
   build:
