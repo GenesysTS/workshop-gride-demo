@@ -1,10 +1,10 @@
 name: Build and Deploy to Azure
 
 on:
-  push:
-    branches:
-      - main  # Set a branch to deploy
-  pull_request:
+  workflow_run:
+    workflows: ["Update Hugo Template for GTS"]
+    types:
+      - completed
 
 jobs:
   deploy:
@@ -36,6 +36,6 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob delete-batch --account-name 'genesyssamples' --source '$web' --pattern 'workshops/${{ github.event.repository.name }}/*'
-            az storage blob upload-batch --account-name 'genesyssamples' --source ./public --destination '$web/workshops/${{ github.event.repository.name }}'
+            az storage blob delete-batch --account-name 'genesyssamples' --source '$web' --pattern 'workshops-gdemo/${{ github.event.repository.name }}/*'
+            az storage blob upload-batch --account-name 'genesyssamples' --source ./public --destination '$web/workshops-gdemo/${{ github.event.repository.name }}'
 
