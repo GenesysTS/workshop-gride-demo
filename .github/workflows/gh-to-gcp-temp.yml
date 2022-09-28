@@ -3,10 +3,14 @@ name: Build and Deploy to GCP
 # https://cloud.google.com/blog/products/identity-security/enabling-keyless-authentication-from-github-actions
 
 on:
-  push:
-    branches:
-      - main  # Set a branch to deploy
-  pull_request:
+  workflow_run:
+    workflows: ["Update Template for GTS"]
+    types:
+      - completed
+  #push:
+  #  branches:
+  #    - main  # Set a branch to deploy
+  #pull_request:
 
 jobs:
   deploy:
